@@ -13,3 +13,30 @@ export const requestMovie = async () => {
   const response = await axios.get("/trending/movie/day", options);
   return response;
 };
+
+export const requestMovieByQuery = async (query, page) => {
+  const response = await axios.get(`/search/movie?query=${query}`, {
+    params: {
+      api_key: API_KEY,
+      language: "en-US",
+      headers: { key: query },
+      page,
+    },
+  });
+  return response;
+};
+
+export const requestMovieId = async (movieId) => {
+  const response = await axios.get(`/movie/${movieId}`, options);
+  return response;
+};
+
+export const requestMovieCast = async (movieId) => {
+  const response = await axios.get(`/movie/${movieId}/credits`, options);
+  return response;
+};
+
+export const requestMovieReviews = async (movieId) => {
+  const response = await axios.get(`/movie/${movieId}/reviews`, options);
+  return response;
+};
